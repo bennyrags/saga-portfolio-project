@@ -1,8 +1,11 @@
 .App {
   text-align: center;
 }
-.border {
-  border:1px solid green;
+
+
+.imgGrid {
+  display:flex;
+  align-items:center;
 }
 
 .thumbnail {
