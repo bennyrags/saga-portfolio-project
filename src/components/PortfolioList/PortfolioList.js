@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+//import PortfolioListItem from '../PortfolioListItem/PortfolioListItem'
+
 
 class PortfolioList extends Component {
 
@@ -19,7 +21,8 @@ render() {
     return(
         <>
         {this.props.reduxState.projects.map(project =>
-            <section key={project.id}>
+            <div key={project.id}>
+            
               <Grid container spacing={16}>
                 <Grid className="imgGrid" item xs={3}>
                   <img className='thumbnail' src={project.thumbnail} alt={project.description} />
@@ -44,7 +47,7 @@ render() {
                
               </Grid>
               <Divider />
-            </section>
+            </div>
           )}
           </>
     )
