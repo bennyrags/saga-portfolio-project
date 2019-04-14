@@ -4,7 +4,7 @@ import AdminTable from '../AdminTable/AdminTable'
 import AdminForm from '../AdminForm/AdminForm'
 import { Link } from 'react-router-dom';
 import './Admin.css'
-import AdminHeader from '../AdminHeader/AdminHeader'
+import PortfolioHeader from '../PortfolioHeader/PortfolioHeader'
 
 
 class Admin extends Component {
@@ -16,7 +16,7 @@ class Admin extends Component {
 
         return (
             <>
-            <AdminHeader />
+            <PortfolioHeader />
             <section className='container'>
             <Link className='homeLink' to='/'>Back to Projects</Link>
              <h1>Add New Project</h1>

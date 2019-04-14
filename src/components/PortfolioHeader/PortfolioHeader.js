@@ -1,6 +1,7 @@
 import React from 'react';
-import './AdminHeader.css'
-const AdminHeader = () => {
+import './PortfolioHeader.css'
+
+const PortfolioHeader = () => {
 return (
     <header className='linearGradient'>
         Admin
@@ -9,4 +10,4 @@ return (
 
 }
 
-export default AdminHeader;
+export default PortfolioHeader;

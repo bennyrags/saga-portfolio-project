@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 //import PortfolioListItem from '../PortfolioListItem/PortfolioListItem'
-
+import AppHeader from '../AppHeader/AppHeader'
 
 class PortfolioList extends Component {
 
@@ -20,6 +20,7 @@ class PortfolioList extends Component {
 render() {
     return(
         <>
+        <AppHeader/>
         {this.props.reduxState.projects.map(project =>
             <div key={project.id}>
             
