@@ -12,8 +12,9 @@ class App extends Component {
   // Renders the entire app on the DOM
   render() {
     return (
-
+    
       <div className="App">
+      
         <Router>
           <Route exact path='/' component={PortfolioList} />
           <Route path='/admin' component={Admin} />

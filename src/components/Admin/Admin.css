@@ -1,0 +1,15 @@
+.homeLink {
+margin-top:1em;
+display:block;
+text-align:left;
+}
+
+.rightAlign {
+    text-align:right !important;
+    padding-right:0 !important ;
+  }
+  
+
+.linearGradient {
+    background: linear-gradient(45deg, lightgreen 30%,blue);
+}

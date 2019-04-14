@@ -1,51 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableRow from '@material-ui/core/TableRow'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
+import AdminTable from '../AdminTable/AdminTable'
+import AdminForm from '../AdminForm/AdminForm'
+import { Link } from 'react-router-dom';
+import './Admin.css'
+import AdminHeader from '../AdminHeader/AdminHeader'
 
 
 class Admin extends Component {
 
-    handleDispatch = () => {
-        this.props.dispatch({ type: 'GET_PROJECTS' })
-    }
 
-    componentDidMount() {
-        this.handleDispatch();
-    }
+   
 
     render() {
 
         return (
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>
-                            Name
-                        </TableCell>
-                        <TableCell>
-                            Action
-                        </TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {this.props.reduxState.projects.map(project => 
-                    <TableRow key={project.id}>
-                          <TableCell>
-                            {project.name}      
-                        </TableCell>  
-                          <TableCell>
-                            <button>Delete</button>      
-                        </TableCell>  
-                    </TableRow>
-    
-                        
-                        )}
-                                    </TableBody>
-            </Table>
+            <>
+            <AdminHeader />
+            <section className='container'>
+            <Link className='homeLink' to='/'>Back to Projects</Link>
+             <h1>Add New Project</h1>
+            <AdminForm />
+            <h2>Current Projects</h2>
+            <AdminTable />
+            </section>
+            </>
         )
     }
 
