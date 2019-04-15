@@ -17,7 +17,6 @@ function* getProjects(action) {
 console.log(`inside of getProjects saga`);
 const response = yield axios.get('/portfolio');
 yield put({type: 'SET_PROJECTS', payload: response.data})
-console.log(`inside getProjects, heres response`, response.data);
 }
 
 function* deleteProject(action) {
@@ -26,15 +25,15 @@ function* deleteProject(action) {
     yield put({type:'GET_PROJECTS'});
 }
 function* newProject(action) {
-    yield console.log(`inside newProj func, here is action payload`, action.payload);
    yield axios.post(`/portfolio/`, action.payload);
    yield put({type:'GET_PROJECTS'});
 }
 
 // Create the rootSaga generator function
+//There is a takeEvery for each kind of inteaction with the DB
 function* rootSaga() {
 yield takeEvery('GET_PROJECTS', getProjects);
-yield takeEvery('DELETE_PROJECT', deleteProject );
+yield takeEvery('DELETE_PROJECT', deleteProject);
 yield takeEvery('NEW_PROJECT', newProject)
 }
 
