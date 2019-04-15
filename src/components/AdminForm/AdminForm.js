@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import './AdminForm.css'
 import Button from '@material-ui/core/Button'
 
+//This are the items for the tag drop-down. Material UI is giving me a warning for doing it this way, but they don't provide a real alternative. Note to future self -change drop down syntax at some point
 const tagId = [
     {
         value: 1,
@@ -49,9 +50,9 @@ class AdminForm extends Component {
         }
     }
 
+    //click dispatches to Redux, which pushes the payload to the post function
     handleClick = (event) => {
         event.preventDefault();
-        console.log(`click clicked in handleClick`);
         this.props.dispatch({ type: 'NEW_PROJECT', payload: this.state.newProject })
     }
 
@@ -62,16 +63,14 @@ class AdminForm extends Component {
                 [event.target.name]: event.target.value
             }
         })
-        console.log(this.state);
 
     }
-
-
 
     render() {
         return (
             <>
                 <form>
+                    {/* I wrapped the form fields in grid containers  */}
                     <Grid container justify="space-around" spacing={16}>
                         <Grid item md={3} lg={3} xl={3}>
                             <TextField
@@ -100,6 +99,7 @@ class AdminForm extends Component {
                             </TextField>
                         </Grid>
                         <Grid item md={3} lg={3} xl={3}>
+                        {/* This select function may need to be changed in the future - warning from material ui */}
                             <TextField
                                 label='Select Tag'
                                 select
