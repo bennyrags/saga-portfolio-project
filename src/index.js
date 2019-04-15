@@ -16,26 +16,26 @@ import axios from 'axios';
 //sagas that use ajax get request to get, delete, and post
 
 function* getProjects(action) {
-const response = yield axios.get('/portfolio');
-yield put({type: 'SET_PROJECTS', payload: response.data})
+    const response = yield axios.get('/portfolio');
+    yield put({ type: 'SET_PROJECTS', payload: response.data })
 }
 
 function* deleteProject(action) {
     yield console.log(`inside deleteProject func, here is id`, action.payload);
     yield axios.delete(`/portfolio/${action.payload}`);
-    yield put({type:'GET_PROJECTS'});
+    yield put({ type: 'GET_PROJECTS' });
 }
 function* newProject(action) {
-   yield axios.post(`/portfolio/`, action.payload);
-   yield put({type:'GET_PROJECTS'});
+    yield axios.post(`/portfolio/`, action.payload);
+    yield put({ type: 'GET_PROJECTS' });
 }
 
 // Create the rootSaga generator function
 //There is a takeEvery for each kind of inteaction with the DB
 function* rootSaga() {
-yield takeEvery('GET_PROJECTS', getProjects);
-yield takeEvery('DELETE_PROJECT', deleteProject);
-yield takeEvery('NEW_PROJECT', newProject)
+    yield takeEvery('GET_PROJECTS', getProjects);
+    yield takeEvery('DELETE_PROJECT', deleteProject);
+    yield takeEvery('NEW_PROJECT', newProject)
 }
 
 // Create sagaMiddleware
@@ -74,6 +74,6 @@ const storeInstance = createStore(
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>,
     document.getElementById('root'));
 registerServiceWorker();

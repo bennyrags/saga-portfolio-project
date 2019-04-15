@@ -13,6 +13,7 @@ class App extends Component {
   render() {
     return (
     
+      //App consists of two main pages, or views, as represented below
       <div className="App">
         <Router>
           <Route exact path='/' component={PortfolioList} />

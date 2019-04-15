@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
-//Select all of these things
+    //Select all of these things individually to make the join work
     const queryText = `SELECT "projects"."id", "projects"."name", "projects"."description", "projects"."thumbnail", "projects"."website", "projects"."github", "projects"."date_completed", "tags"."name" AS "tag_name" FROM "projects" JOIN "tags" ON "tags"."id" = "projects"."tag_id"; `;
     pool.query(queryText)
         .then(response => {

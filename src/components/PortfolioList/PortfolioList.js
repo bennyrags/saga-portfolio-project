@@ -49,7 +49,7 @@ class PortfolioList extends Component {
                 {project.github !== '' &&
 
                   <Grid item lg={4} md={4} sm={4} xs={6}>
-                    <h4><a href={project.github} target='_blank'  rel="noopener noreferrer" >GitHub</a></h4>
+                    <h4><a href={project.github} target='_blank' rel="noopener noreferrer" >GitHub</a></h4>
                   </Grid>
                 }
 
