@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-//import PortfolioListItem from '../PortfolioListItem/PortfolioListItem'
-import AppHeader from '../AppHeader/AppHeader'
+import PortfolioHeader from '../PortfolioHeader/PortfolioHeader'
+import './PortfolioList.css'
+import moment from "moment";
+
 
 class PortfolioList extends Component {
 
@@ -11,48 +13,75 @@ class PortfolioList extends Component {
   handleDispatch = () => {
     this.props.dispatch({ type: 'GET_PROJECTS' })
   }
-  
-    componentDidMount() {
+
+  componentDidMount() {
     this.handleDispatch();
-    }
+  }
 
 
-render() {
-    return(
-        <>
-        <AppHeader/>
+  render() {
+    return (
+      <>
+        <PortfolioHeader />
         {this.props.reduxState.projects.map(project =>
-            <div key={project.id}>
-            
-              <Grid container spacing={16}>
-                <Grid className="imgGrid" item xs={3}>
+
+          <div className='projectContainer' key={project.id}>
+            <Grid container spacing={16}>
+
+              {project.thumbnail != '' &&
+                <Grid className="imgGrid" item lg={4} md={4} sm={6} xs={6}>
                   <img className='thumbnail' src={project.thumbnail} alt={project.description} />
                 </Grid>
-                <Grid container item xs={9}>
-                  <Grid item xs={3} >
-                    <h3>{project.name}</h3>
-                  </Grid>
-                  <Grid item xs={3} >
+
+              }
+              <Grid container item xs={6} sm={6} md={4} lg={4}>
+                <Grid item xs={6} sm={6} md={4} lg={4} >
+                  <h3>{project.name}</h3>
+                </Grid>
+
+                {project.website != '' &&
+                  <Grid item lg={4} md={4} sm={4} xs={6}>
                     <h4><a href={project.website}>Website</a></h4>
                   </Grid>
-                  <Grid item xs={3} >
-                    <h4><a href={project.github}>GitHub</a></h4>
+                }
+
+
+                {project.github != '' &&
+
+                  <Grid item lg={4} md={4} sm={4} xs={6}>
+                    <h4><a href={project.github} target='_blank'>GitHub</a></h4>
                   </Grid>
-                  <Grid item xs={3} >
-                    <h6>{project.tag_name}</h6>
+                }
+
+                {project.tag_name != '' &&
+
+                  <Grid item lg={6} md={6} sm={12} xs={12}>
+                    <h4>Primary library: {project.tag_name}</h4>
                   </Grid>
-                  <Grid item xs={12} >
+                }
+
+                {project.date_completed != '' &&
+
+                  <Grid item lg={6} md={6} sm={12} xs={12}>
+                    <h4>Date Done: {moment(project.date_completed).format('MM-DD-YYYY')}</h4>
+                  </Grid>
+                }
+
+                {project.description != '' &&
+
+                  <Grid item sm={12} >
                     <p>{project.description}</p>
                   </Grid>
-                </Grid>
-               
+                }
               </Grid>
-              <Divider />
-            </div>
-          )}
-          </>
+
+            </Grid>
+            <Divider className='divider' />
+          </div>
+        )}
+      </>
     )
-}
+  }
 
 
 
@@ -60,7 +89,7 @@ render() {
 }
 
 const mapReduxStateToProps = reduxState => ({
-    reduxState,
-  })
-  
-  export default connect(mapReduxStateToProps)(PortfolioList);
+  reduxState,
+})
+
+export default connect(mapReduxStateToProps)(PortfolioList);

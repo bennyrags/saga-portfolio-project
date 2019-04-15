@@ -10,10 +10,7 @@ import Button from '@material-ui/core/Button'
 class AdminTable extends Component {
 
     handleDelete = (id) => {
-    window.confirm('Are You Sure You Want To Delete?') && this.props.dispatch({ type: 'DELETE_PROJECT', payload:id })
-
-        console.log(`Inside of handleDelete, here's the id`, id);
-    
+    window.confirm('Are You Sure You Want To Delete?') && this.props.dispatch({ type: 'DELETE_PROJECT', payload:id })    
     }
 
 

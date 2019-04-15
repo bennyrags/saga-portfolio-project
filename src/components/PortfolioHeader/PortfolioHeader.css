@@ -1,10 +1,17 @@
-header {
+.header {
     height:100px;
-    
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    color:white;
-    font-size:2rem;
 }
 
+
+
+.headShot {
+    border-radius:50%;
+    width:100px;
+    height:auto;
+    margin-top:75px;
+    box-shadow: 1px 1px 5px grey;
+    }
+h1 {
+    margin-top:1.5em;
+    text-align:center;
+}
