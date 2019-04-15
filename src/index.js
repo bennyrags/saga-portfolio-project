@@ -13,8 +13,9 @@ import { takeEvery, put } from 'redux-saga/effects';
 //axios
 import axios from 'axios';
 
+//sagas that use ajax get request to get, delete, and post
+
 function* getProjects(action) {
-console.log(`inside of getProjects saga`);
 const response = yield axios.get('/portfolio');
 yield put({type: 'SET_PROJECTS', payload: response.data})
 }
