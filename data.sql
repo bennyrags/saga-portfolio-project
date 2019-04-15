@@ -16,3 +16,5 @@ CREATE TABLE "projects" (
 
 INSERT INTO "tags" ("name") 
 VALUES ('React'), ('jQuery'), ('Node'), ('SQL'), ('Redux'), ('HTML');
+
+SELECT "projects"."id", "projects"."name", "projects"."description", "projects"."thumbnail", "projects"."website", "projects"."github", "projects"."date_completed", "tags"."name" AS "tag_name" FROM "projects" JOIN "tags" ON "tags"."id" = "projects"."tag_id";
